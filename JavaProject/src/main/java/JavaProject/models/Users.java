@@ -33,12 +33,15 @@ public class Users {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	@NotNull
+	@Size(min = 3, message = "Name must be greater than 3 characters")
 	private String name;
 
-	@NotBlank(message="First Name must not be blank!")
+	@NotBlank(message="Email must not be blank!")
     @Pattern(regexp="^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+.[a-zA-Z0-9.-]+$", message="Invalid email pattern")
     @Email(message="Email must be valid")
 	private String email;
+	@NotNull
+	@Size(min = 9,max=9 ,message = "Phone number must be 9 characters")
 	private String phonenum;
 	@Size(min = 8, message = "Password must be greater than 5 characters")
 	private String password;
@@ -64,6 +67,86 @@ public class Users {
 	
 	public Users() {
 		super();
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhonenum() {
+		return phonenum;
+	}
+
+	public void setPhonenum(String phonenum) {
+		this.phonenum = phonenum;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getPasswordConfirmation() {
+		return passwordConfirmation;
+	}
+
+	public void setPasswordConfirmation(String passwordConfirmation) {
+		this.passwordConfirmation = passwordConfirmation;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
+
+	public List<Trip> getTrip() {
+		return trip;
+	}
+
+	public void setTrip(List<Trip> trip) {
+		this.trip = trip;
 	}
 
 	@PrePersist
