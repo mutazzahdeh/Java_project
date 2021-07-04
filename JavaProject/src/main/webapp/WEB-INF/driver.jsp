@@ -21,38 +21,87 @@
             <div class="login-box">
                 <div class="login-snip">
                 <h2>Driver</h2>
-                 <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Login</label> <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+                 <input id="tab-1" type="radio" name="tab" class="sign-in" checked>
+                 <label for="tab-1" class="tab">Login</label> <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
                     <div class="login-space">
                         <div class="login">
-                            <div class="group"> <label for="user" class="label">Username</label> <input id="user" type="text" class="input" placeholder="Enter your username"> </div>
-                            <div class="group"> <label for="pass" class="label">Password</label> <input id="pass" type="password" class="input" data-type="password" placeholder="Enter your password"> </div>
-                            <div class="group"> <input id="check" type="checkbox" class="check" checked> <label for="check"><span class="icon"></span> Keep me Signed in</label> </div>
-                            <div class="group"> <input type="submit" class="button" value="Sign In"> </div>
+                         <form:form action="/loginasdriver" method="post" modelAttribute="driver">
+                            <div class="group"> 
+                            <label for="user" class="label">Username</label> 
+                            <input id="user" type="text" class="input" placeholder="Enter your username"> 
+                            </div>
+                            <div class="group"> 
+                            <label for="pass" class="label">Password</label> 
+                            <input id="pass" type="password" class="input" data-type="password" placeholder="Enter your password"> 
+                            </div>
+                            <div class="group">
+                             <input id="check" type="checkbox" class="check" checked> 
+                             <label for="check"><span class="icon"></span> Keep me Signed in</label> 
+                             </div>
+                            <div class="group"> 
+                            <input type="submit" class="button" value="Sign In"> 
+                            </div>
+                              </form:form>   
                             <div class="hr"></div>
-                            <div class="foot"> <a href="#">Forgot Password?</a> </div>
+                            
                         </div>
                         <div class="sign-up-form">
-                            <div class="group"> <label for="user" class="label">Username</label> <input id="user" type="text" class="input" placeholder="Create your Username"> </div>
-                            <div class="group"> <label for="pass" class="label">Email Address</label> <input id="pass" type="text" class="input" placeholder="Enter your email address"> </div>
-                            <div class="group"> <label for="pass" class="label">Car </label> <input id="pass" type="text" class="input" placeholder="Car"> </div>
-                            <div class="group"> <label for="pass" class="label">Model</label> <input id="pass" type="number" class="input" placeholder="Model"> </div>
-                            <div class="group"> <label for="pass" class="label">City</label>
+                        <form:form action="/loginasdriver" method="post" modelAttribute="driver">
+                            <div class="group"> 
+                            <form:label for="user" class="label" path="name">Username</form:label>
+                              <form:errors path="name"/>
+                             <form:input id="user" type="text" class="input" placeholder="Create your Username" path="name"/>
+                              </div>
+                            <div class="group"> 
+                            <form:label for="pass" class="label" path="email">Email Address</form:label>
+                              <form:errors path="email"/>
+                             <form:input id="pass" type="text" class="input" placeholder="Enter your email address" path="email"/> 
+                             </div>
+                             <div class="group"> 
+                            <form:label for="pass" class="label" path="phonenum">Email Address</form:label>
+                              <form:errors path="phonenum"/>
+                             <form:input id="pass" type="text" class="input" placeholder="Enter your email address" path="phonenum"/> 
+                             </div>
+                            <div class="group"> 
+                  
+                            <form:label for="pass" class="label" path="car">Car </form:label> 
+                            <form:errors path="car"/>
+                            <form:input id="pass" type="text" class="input" placeholder="Car" path="car"/> </div>
+                            <div class="group"> 
+                            <form:label for="pass" class="label" path="Model">Model</form:label> 
+                             <form:errors path="Model"/>
+                            <form:input id="pass" type="number" class="input" placeholder="Model" path="Model"/> 
+                            </div>
+                            <div class="group"> 
+                            <form:label for="pass" class="label" path="city">City</form:label>
+                              <form:errors path="city"/>
                              
-                             <select id="pass" class="input" >
+                             <form:select id="pass" class="input"  path="city">
    		
    								<c:forEach items="${city}" var="c">
-     							<option value="${c}"><c:out value="${c.name}"/> </option>
+     							<form:option value="${c}"><c:out value="${c.name}"/> </form:option>
         						</c:forEach>
-								</select>
+								</form:select>
                              
                              </div>
-                            <div class="group"> <label for="pass" class="label">Password</label> <input id="pass" type="password" class="input" data-type="password" placeholder="Create your password"> </div>
-                            <div class="group"> <label for="pass" class="label">Repeat Password</label> <input id="pass" type="password" class="input" data-type="password" placeholder="Repeat your password"> </div>
+                            <div class="group"> 
+                            <form:label for="pass" class="label" path="password">Password</form:label> 
+                              <form:errors path="password"/>
+                            <form:input id="pass" type="password" class="input" data-type="password" placeholder="Create your password" path="password"/> 
+                            </div>
+                            <div class="group"> 
+                            <form:label for="pass" class="label" path="passwordConfirmation">Repeat Password</form:label> 
+                              <form:errors path="passwordConfirmation"/>
+                            <form:input id="pass" type="password" class="input" data-type="password" placeholder="Repeat your password" path="passwordConfirmation"/> 
+                            </div>
                             
                             
-                            <div class="group"> <input type="submit" class="button" value="Sign Up"> </div>
+                            <div class="group"> 
+                            <input type="submit" class="button" value="Sign Up"> 
+                            </div>
                             <div class="hr"></div>
                             <div class="foot"> <label for="tab-1">Already Member?</label> </div>
+                            </form:form>    
                         </div>
                     </div>
                 </div>

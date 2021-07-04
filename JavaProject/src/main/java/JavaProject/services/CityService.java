@@ -40,15 +40,15 @@ public class CityService {
 	public void createAllCity() {
 		String[] city= {"Hebron","Ramallah","Bethlehem","Nablus","Salfit","Jerusalem","Gaza","Tubas","Tulkarem","Jenin","Albireh","Qalqilyah", "Jericho"};
 		List<City> c=findAllCity();
-		System.out.println("12@@@@@@@@@@@@@@");
-		System.out.println(c.size());
-		System.out.println(c.isEmpty());
-		Long x= Long.valueOf(1);
-		City ci=findById(x);
-		System.out.println(ci.getName());
-		System.out.println(ci.getId());
+//		System.out.println("12@@@@@@@@@@@@@@");
+//		System.out.println(c.size());
+//		System.out.println(c.isEmpty());
+//		Long x= Long.valueOf(1);
+//		City ci=findById(x);
+//		System.out.println(ci.getName());
+//		System.out.println(ci.getId());
 		if(c.isEmpty()) {
-			System.out.println("@@@@@@@@@@@@@@");
+//			System.out.println("@@@@@@@@@@@@@@");
 			for(int i=0;i<city.length;i++) {
 				this.createCityName(city[i]);
 			}
