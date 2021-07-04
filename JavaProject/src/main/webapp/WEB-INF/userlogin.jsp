@@ -12,6 +12,11 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/userlog.css">
 </head>
+<style>
+select {
+	color:black;
+}
+</style>
 <body>
 
 <div class="row">
@@ -24,32 +29,81 @@
                  <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Login</label> <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
                     <div class="login-space">
                         <div class="login">
+                        <form:form action="/login" method="post" modelAttribute="userlog">
                         
-                            <div class="group"> <label for="user" class="label">Username</label> <input id="user" type="text" class="input" placeholder="Enter your username"> </div>
-                            <div class="group"> <label for="pass" class="label">Password</label> <input id="pass" type="password" class="input" data-type="password" placeholder="Enter your password"> </div>
-                            <div class="group"> <input id="check" type="checkbox" class="check" checked> <label for="check"><span class="icon"></span> Keep me Signed in</label> </div>
-                            <div class="group"> <input type="submit" class="button" value="Sign In"> </div>
-                            <div class="hr"></div>
-                            <div class="foot"> <a href="#">Forgot Password?</a> </div>
+                        
+                        <div class="group">
+                        <form:label for="user" class="label" path="email">Email:</form:label>
+                        <form:input id="pass"  class="input"  path="email"/> 
+                        <form:errors path="email"/>
+                        </div>
+                        
+                        
+                     
+                        
+                        <div class="group">
+                        <form:label for="user" class="label" path="password">password</form:label>
+                        <form:input id="pass" type="password" class="input" data-type="password" path="password"/>
+                        <form:errors path="password"/>
+                        </div>
+                        
+                       
+                        
+                      
+                        
+                        <div class="group"> <input type="submit" class="button" value="Sign In"> </div>
+                        
+                        </form:form>
+                       <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+                     	<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+                    
                         </div>
                         <div class="sign-up-form">
-                            <div class="group"> <label for="user" class="label">Username</label> <input id="user" type="text" class="input" placeholder="Create your Username"> </div>
-                            <div class="group"> <label for="pass" class="label">Password</label> <input id="pass" type="password" class="input" data-type="password" placeholder="Create your password"> </div>
-                            <div class="group"> <label for="pass" class="label">Repeat Password</label> <input id="pass" type="password" class="input" data-type="password" placeholder="Repeat your password"> </div>
-                            <div class="group"> <label for="pass" class="label">Email Address</label> <input id="pass" type="text" class="input" placeholder="Enter your email address"> </div>
-                            <div class="group"> <label for="pass" class="label">Phone number</label> <input id="pass" type="number" class="input" placeholder="Enter your phone number"> </div>
-                            <div class="group"> <label for="pass" class="label">City</label>
-                             
-                             <select id="pass" class="input" >
+                        <form:form action="/loginasuser" method="post" modelAttribute="userlog" >
+                        
+                        <div class="group">
+                        <form:label for="user" class="label" path="name">name</form:label>
+                        <form:input id="pass"  class="input"  path="name"/>
+                        <form:errors path="name"/>
+                        </div>
+                        <div class="group">
+                        <form:label for="user" class="label" path="email">email</form:label>
+                        <form:input id="pass" type="email" class="input"  path="email"/>
+                        <form:errors path="email"/>
+                        </div>
+                        
+                        
+                        <div class="group">
+                        <form:label for="user" class="label" path="password">password</form:label>
+                        <form:input id="pass" type="password" class="input" data-type="password" path="password"/>
+                        <form:errors path="password"/>
+                        </div>
+                        
+                        <div class="group">
+                        <form:label for="user" class="label" path="passwordConfirmation">passwordConfirmation</form:label>
+                        <form:input id="pass" type="password" class="input" data-type="password" path="passwordConfirmation"/>
+                        <form:errors path="passwordConfirmation"/>
+                        </div>
+                        
+                         <div class="group">
+                        <form:label for="user" class="label" path="phonenum">phone number:</form:label>
+                        <form:input id="pass"  class="input"  path="phonenum"/>
+                        <form:errors path="phonenum"/>
+                        </div>
+                        <select id="pass" class="input" path="city">
    		
    								<c:forEach items="${city}" var="c">
      							<option value="${c}"><c:out value="${c.name}"/> </option>
         						</c:forEach>
 								</select>
-                             
-                             </div>
-                            <div class="group"> <input type="submit" class="button" value="Sign Up"> </div>
+								
+								<div class="group"> <input type="submit" class="button" value="Sign Up"> </div>
                             <div class="hr"></div>
+								
+                        </form:form>
+        
+                             </div>
+                            
                             
                         </div>
                     </div>
