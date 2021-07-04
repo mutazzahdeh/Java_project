@@ -30,23 +30,22 @@ color:black;
                  <label for="tab-1" class="tab">Login</label> <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
                     <div class="login-space">
                         <div class="login">
-                         <form:form action="/loginasdriver" method="post" modelAttribute="driver">
+                        <c:out value="${error}"/>
+             `			  <form action="/logdri" method="post" >
                             <div class="group"> 
-                            <label for="user" class="label">Username</label> 
-                            <input id="user" type="text" class="input" placeholder="Enter your username"> 
+                            <label for="user" class="label">Email</label> 
+                            
+                            <input id="user" type="text" class="input" placeholder="Enter your Email" name="email"/> 
                             </div>
                             <div class="group"> 
-                            <label for="pass" class="label">Password</label> 
-                            <input id="pass" type="password" class="input" data-type="password" placeholder="Enter your password"> 
+                            <label for="pass" class="label" >Password</label> 
+                            
+                            <input id="pass" type="password" class="input" data-type="password" placeholder="Enter your password" name="password"/> 
                             </div>
-                            <div class="group">
-                             <input id="check" type="checkbox" class="check" checked> 
-                             <label for="check"><span class="icon"></span> Keep me Signed in</label> 
-                             </div>
                             <div class="group"> 
                             <input type="submit" class="button" value="Sign In"> 
                             </div>
-                              </form:form>   
+                            </form>
                             <div class="hr"></div>
                             
                         </div>

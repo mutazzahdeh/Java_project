@@ -121,6 +121,21 @@ public class javacontroller {
         	return "redirect:/coursers";
         	}
     }
+
+	 @PostMapping(value="/logdri")
+	    public String loginUser(@RequestParam("email") String email, @ModelAttribute("driver") Driver driver, @RequestParam("password") String password, Model model, HttpSession session) {
+	        boolean isAuthenticated = driverService.authenticateUser(email, password);
+	        if(isAuthenticated) {
+	        	Driver d =driverService.findByEmail(email); 
+	        	session.setAttribute("user", d.getId() );
+	        	return "redirect:/";
+	        }else {
+	        	model.addAttribute("error", "Invalid credentials. Try again!");
+	       
+	        	return "driver.jsp";
+	        }
+	    }
+
     	
     	@RequestMapping("/login")
     	public String userLogIN(@ModelAttribute("userlog") Users user, Model model, HttpSession session,@Valid @ModelAttribute("trip") Trip trip,BindingResult ros) {
@@ -169,6 +184,7 @@ public class javacontroller {
     	
     		
 	
+
 	
 
 }
