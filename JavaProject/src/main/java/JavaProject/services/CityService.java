@@ -19,18 +19,18 @@ public class CityService {
 		
 	}
 	
-	public CityService() {
-		super();
-		String[] city= {"Hebron","Ramallah","Bethlehem","Nablus","Salfit","Jerusalem","Gaza","Tubas","Tulkarem","Jenin","Albireh","Qalqilyah", "Jericho"};
-		List<City> c=findAllCity();
-		City ci=new City();
-		if(c.size()==0) {
-			for(int i=0;i<city.length;i++) {
-				ci.setName(city[i]);
-				cityRepository.save(ci);
-			}
-		}
-	}
+//	public CityService() {
+//		super();
+//		String[] city= {"Hebron","Ramallah","Bethlehem","Nablus","Salfit","Jerusalem","Gaza","Tubas","Tulkarem","Jenin","Albireh","Qalqilyah", "Jericho"};
+//		List<City> c=findAllCity();
+//		City ci=new City();
+//		if(c.size()==0) {
+//			for(int i=0;i<city.length;i++) {
+//				ci.setName(city[i]);
+//				cityRepository.save(ci);
+//			}
+//		}
+//	}
 
 	public City createCity(City c) {
 	return cityRepository.save(c);
