@@ -13,6 +13,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
 
 import JavaProject.models.City;
 import JavaProject.models.Driver;
@@ -76,7 +79,19 @@ public class javacontroller {
     	return "redirect:/coursers";
     	}
     }
-	
+	 @PostMapping(value="/logdri")
+	    public String loginUser(@RequestParam("email") String email, @ModelAttribute("driver") Driver driver, @RequestParam("password") String password, Model model, HttpSession session) {
+	        boolean isAuthenticated = driverService.authenticateUser(email, password);
+	        if(isAuthenticated) {
+	        	Driver d =driverService.findByEmail(email); 
+	        	session.setAttribute("user", d.getId() );
+	        	return "redirect:/";
+	        }else {
+	        	model.addAttribute("error", "Invalid credentials. Try again!");
+	       
+	        	return "driver.jsp";
+	        }
+	    }
 	
 
 }
