@@ -19,9 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import JavaProject.models.City;
 import JavaProject.models.Driver;
+import JavaProject.models.Trip;
 import JavaProject.models.Users;
+import JavaProject.repositories.TripRepository;
 import JavaProject.services.CityService;
 import JavaProject.services.DriverService;
+import JavaProject.services.TripService;
 import JavaProject.services.UsersService;
 import JavaProject.valedator.DriverValidator;
 import JavaProject.valedator.UserValidator;
@@ -34,17 +37,19 @@ public class javacontroller {
 	private final DriverService driverService;
 	private final UsersService usersservice;
 	private final UserValidator userValidator;
+	private final TripService tripService;
 	
 	
 
 	public javacontroller(CityService cityService, DriverValidator driverValidator, DriverService driverService,
-			UsersService usersservice, UserValidator userValidator) {
+			UsersService usersservice, UserValidator userValidator,TripService tripService) {
 		super();
 		this.cityService = cityService;
 		this.driverValidator = driverValidator;
 		this.driverService = driverService;
 		this.usersservice = usersservice;
 		this.userValidator = userValidator;
+		this.tripService=tripService;
 	}
 
 	@RequestMapping("/")
@@ -70,9 +75,16 @@ public class javacontroller {
 	}
 	
 	@RequestMapping("/test")
-	public String userhome() {
-		return "home.jsp";
-	}
+	public String userhome(@ModelAttribute("trip") Trip trip,HttpSession session) {
+		
+	if(session.getAttribute("userId") !=null) {
+    		
+		return "home.jsp";	
+    			}else
+    				return "redirect:/userlog";	
+    		}
+		
+	
 	
 	
 	@PostMapping(value="/loginasuser")
@@ -111,7 +123,7 @@ public class javacontroller {
     }
     	
     	@RequestMapping("/login")
-    	public String signIn(@ModelAttribute("userlog") Users user, Model model, HttpSession session) {
+    	public String userLogIN(@ModelAttribute("userlog") Users user, Model model, HttpSession session,@Valid @ModelAttribute("trip") Trip trip,BindingResult ros) {
     		boolean isAuthenticated = usersservice.authenticateUser(user.getEmail(), user.getPassword());
     		if(isAuthenticated) {
     			Users u = usersservice.findByEmail(user.getEmail());
@@ -119,10 +131,43 @@ public class javacontroller {
     			return "redirect:/userlog";
     		}
     		else {
+    			
     			model.addAttribute("error", "Invalid Credentials! Please try again with the correct user information!");
-    			return "home.jsp";	
+    			if(session.getAttribute("userId") !=null) {
+    		
+			return "redirect:/test";	
+    			}else
+    				return "redirect:/userlog";	
     		}
     	}
+    	
+    	
+    	@RequestMapping("/gettaxi")
+    	public String getTaxi(@Valid @ModelAttribute("trip") Trip trip,BindingResult ros,HttpSession session) {
+    		System.out.println(session.getAttribute("userId"));
+    		if(session.getAttribute("userId") !=null) {
+    	
+    		if(ros.hasErrors()) {
+    			return"redirect:/test";
+    		}else {
+    		tripService.createTrip(trip);
+    		return "main.jsp";
+    		}
+    	}
+    	else
+    		return "redirect:/userlog";
+    	}
+    	
+    	
+    	@RequestMapping("/logout")
+    	public String logOut(HttpSession session) {
+    		session.invalidate();
+    		
+    		return "redirect:/userlog";
+    	}
+    	
+    	
+    		
 	
 	
 

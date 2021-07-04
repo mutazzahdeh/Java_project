@@ -29,8 +29,11 @@ public class Trip {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	
+	@NotNull
+	private String tripName;
+	@NotNull
 	private String postion;
+	
 	@NotNull
 	private String direction;
 	private int cost;
@@ -62,6 +65,36 @@ public class Trip {
 	public Trip() {
 		super();
 	}
+	public String getTripName() {
+		return tripName;
+	}
+
+
+	public void setTripName(String tripName) {
+		this.tripName = tripName;
+	}
+
+	
+	public String getPostion() {
+		return postion;
+	}
+
+
+	public void setPostion(String postion) {
+		this.postion = postion;
+	}
+
+
+	public String getDirection() {
+		return direction;
+	}
+
+
+	public void setDirection(String direction) {
+		this.direction = direction;
+	}
+
+	
 
 
 	@PrePersist

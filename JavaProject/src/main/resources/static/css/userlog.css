@@ -4,6 +4,7 @@ body {
     margin: 0;
     color: #6a6f8c;
     background: #c8c8c8;
+    background-image:url("img");
     font: 600 16px/18px 'Open Sans', sans-serif
     
 }
@@ -27,7 +28,7 @@ h2{
     height: 100%;
     position: relative;
     left:500px ;
-    padding: 90px 70px 193px 70px;
+    padding: 90px 70px 391px 70px;
     background: rgba(0, 77, 77, .9);
     margin-top: 10px;
 }
@@ -95,7 +96,8 @@ h2{
     border: none;
     padding: 15px 20px;
     border-radius: 25px;
-    background: rgba(255, 255, 255, .1)
+    background: rgba(255, 255, 255, .1);
+    color:black;
 }
 
 .login-space .group input[data-type="password"] {

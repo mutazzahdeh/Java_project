@@ -12,6 +12,11 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/css/userlog.css">
 </head>
+<style>
+.hammoz{
+color:black;
+}
+</style>
 <body>
 
 <div class="row">
@@ -75,14 +80,14 @@
                             <div class="group"> 
                             <form:label for="pass" class="label" path="city">City</form:label>
                               <form:errors path="city"/>
-                             
+                             <div class="hammoz">
                              <form:select id="pass" class="input"  path="city">
    		
    								<c:forEach items="${city}" var="c">
      							<form:option value="${c}"><c:out value="${c.name}"/> </form:option>
         						</c:forEach>
 								</form:select>
-                             
+                             </div>
                              </div>
                             <div class="group"> 
                             <form:label for="pass" class="label" path="password">Password</form:label> 
@@ -100,7 +105,7 @@
                             <input type="submit" class="button" value="Sign Up"> 
                             </div>
                             <div class="hr"></div>
-                            <div class="foot"> <label for="tab-1">Already Member?</label> </div>
+                           
                             </form:form>    
                         </div>
                     </div>
