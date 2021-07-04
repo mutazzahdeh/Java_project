@@ -27,7 +27,9 @@ public class javacontroller {
 	}
 	
 	@RequestMapping("/userlog")
-	public String user_Log() {
+	public String user_Log(Model model) {
+		List<City> c=cityService.findAllCity();
+		model.addAttribute("city",c);
 		return "userlogin.jsp";
 	}
 	

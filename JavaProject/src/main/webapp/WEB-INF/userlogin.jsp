@@ -1,5 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=windows-1256"
-    pageEncoding="windows-1256"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+         <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>  
+     <%@ page isErrorPage="true" %>  
+     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>  
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +37,16 @@
                             <div class="group"> <label for="pass" class="label">Repeat Password</label> <input id="pass" type="password" class="input" data-type="password" placeholder="Repeat your password"> </div>
                             <div class="group"> <label for="pass" class="label">Email Address</label> <input id="pass" type="text" class="input" placeholder="Enter your email address"> </div>
                             <div class="group"> <label for="pass" class="label">Phone number</label> <input id="pass" type="number" class="input" placeholder="Enter your phone number"> </div>
-                            <div class="group"> <label for="pass" class="label">City</label> <input id="pass" type="text" class="input" placeholder="Enter your City"> </div>
+                            <div class="group"> <label for="pass" class="label">City</label>
+                             
+                             <select id="pass" class="input" >
+   		
+   								<c:forEach items="${city}" var="c">
+     							<option value="${c}"><c:out value="${c.name}"/> </option>
+        						</c:forEach>
+								</select>
+                             
+                             </div>
                             <div class="group"> <input type="submit" class="button" value="Sign Up"> </div>
                             <div class="hr"></div>
                             <div class="foot"> <label for="tab-1">Already Member?</label> </div>
