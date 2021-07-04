@@ -38,7 +38,7 @@ public class Driver {
     @Pattern(regexp="^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+.[a-zA-Z0-9.-]+$", message="Invalid email pattern")
     @Email(message="Email must be valid")
 	private String email;
-	@Size(min = 9,max=9 ,message = "Phone number must be 9 characters")
+	@Size(min = 10,max=10 ,message = "Phone number must be 9 characters")
 	private String phonenum;
 	@Size(min = 8, message = "Password must be greater than 5 characters")
 	private String password;
