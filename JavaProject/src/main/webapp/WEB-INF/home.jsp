@@ -73,6 +73,8 @@ background-image:url("img/back.jpg");
                         
                         </form:form>
                         
+                   <a href="/show" class="button">Show</a>
+                   <a href="/logout" class="button">logout</a>
                    
                         </div>
                      

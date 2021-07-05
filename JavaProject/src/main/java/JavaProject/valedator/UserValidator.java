@@ -17,6 +17,7 @@ public class UserValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         Users user = (Users) target;
+        System.out.println("sss");
         
         if (!user.getPasswordConfirmation().equals(user.getPassword())) {
             errors.rejectValue("passwordConfirmation", "Match");

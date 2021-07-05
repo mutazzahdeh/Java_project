@@ -26,11 +26,12 @@
                     <div class="login-space">
                         <div class="login">
                          
-                             <label for="check"><span class="icon"></span> Keep me Signed in</label> 
+                             
                              </div>
                             <div class="group"> 
                             <input type="submit" class="button" value="Sign In"> 
                             </div>
+                            <a href="/logout" class="button">logout</a>
                             
                                
                         </div>

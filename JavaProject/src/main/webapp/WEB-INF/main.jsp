@@ -13,11 +13,16 @@
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
+<style>
+body{
+background-image: url("img/deadpool.jpg");
+}
+</style>
 <body>
 
 <h1> you taxi orderd</h1>
 
-
+<a href="/logout" class="button">logout</a>
 
 
 <table class="table table-dark">
