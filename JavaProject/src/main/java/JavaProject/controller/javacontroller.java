@@ -10,18 +10,16 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
-
 import JavaProject.models.City;
 import JavaProject.models.Driver;
 import JavaProject.models.Trip;
 import JavaProject.models.Users;
-import JavaProject.repositories.TripRepository;
 import JavaProject.services.CityService;
 import JavaProject.services.DriverService;
 import JavaProject.services.TripService;
@@ -157,16 +155,20 @@ public class javacontroller {
     	}
     	
     	
-    	@RequestMapping("/gettaxi")
-    	public String getTaxi(@Valid @ModelAttribute("trip") Trip trip,BindingResult ros,HttpSession session) {
+    	@PostMapping("/gettaxi")
+    	public String getTaxi(@Valid @ModelAttribute("trip") Trip trip,BindingResult result,HttpSession session,Model model) {
     		System.out.println(session.getAttribute("userId"));
     		if(session.getAttribute("userId") !=null) {
     	
-    		if(ros.hasErrors()) {
+    		if(result.hasErrors()) {
+    			System.out.println("iam in the errors :D");
     			return"redirect:/test";
     		}else {
     		tripService.createTrip(trip);
-    		return "main.jsp";
+    		
+    		
+    		
+    		return "redirect:/show";
     		}
     	}
     	else
@@ -179,6 +181,17 @@ public class javacontroller {
     		session.invalidate();
     		
     		return "redirect:/userlog";
+    	}
+    	
+    	@RequestMapping("/show")
+    	public String show(HttpSession session,Model model) {
+    		if(session.getAttribute("userId") !=null) {
+    			model.addAttribute("trip", tripService.findAllTrip());
+    			return "main.jsp";
+    		}else
+    			
+    			return "redirect:/userlog";
+    		
     	}
     	
     	

@@ -29,6 +29,7 @@ select {
                  <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Login</label> <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
                     <div class="login-space">
                         <div class="login">
+                        <c:out value="${error}"/>
                         <form:form action="/login" method="post" modelAttribute="userlog">
                         
                         
@@ -90,12 +91,13 @@ select {
                         <form:input id="pass"  class="input"  path="phonenum"/>
                         <form:errors path="phonenum"/>
                         </div>
-                        <select id="pass" class="input" path="city">
+                     
+                        <form:select id="pass" class="input"  path="city">
    		
    								<c:forEach items="${city}" var="c">
-     							<option value="${c}"><c:out value="${c.name}"/> </option>
+     							<form:option value="${c}"><c:out value="${c.name}"/> </form:option>
         						</c:forEach>
-								</select>
+								</form:select>
 								
 								<div class="group"> <input type="submit" class="button" value="Sign Up"> </div>
                             <div class="hr"></div>

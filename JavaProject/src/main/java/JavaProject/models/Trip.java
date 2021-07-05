@@ -29,13 +29,16 @@ public class Trip {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	
 	@NotNull
 	private String tripName;
+	
 	@NotNull
 	private String postion;
 	
 	@NotNull
 	private String direction;
+	
 	private int cost;
 	private int time;
 	
