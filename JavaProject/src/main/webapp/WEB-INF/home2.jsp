@@ -12,8 +12,6 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="stylesheet" href="/css/userlog.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link href="/css/style.css" rel="stylesheet" type="text/css"/>
 </head>
 <style>
 img{
@@ -49,17 +47,20 @@ background-image:url("img/back.jpg");
 		  </thead>
 		  <tbody>
 			  <c:forEach var="trip" items="${trips }">
-
+			  <c:forEach var="users" items="${trip.user }">
+			  <c:choose>
+			  <c:when test="${user.city==user.city }">
 			    <tr>
 			      <th><c:out value="${trip.tripName}"/></th>
 			      
 			      <td><c:out value="${trip.postion}"/></td>
-			      <td><c:out value="${trip.direction}"/></td>
-	
+			      <td><c:out value="${trip.direction}"/>/<c:out value="${courser.capacity}"/></td>
+
 			      <td>
-			   
+			      </c:when>
+			      </c:choose>
 		      		
-		      			
+		      </c:forEach>	
 	    	  </c:forEach>
 		  </tbody>
 		</table>

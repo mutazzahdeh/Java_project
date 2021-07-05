@@ -34,4 +34,7 @@ return null;
 public void deleteTrip(Trip t) {
 	tripRepository.delete(t);
 }
+public void updateTrip(Trip t) {
+tripRepository.save(t);
+}
 }

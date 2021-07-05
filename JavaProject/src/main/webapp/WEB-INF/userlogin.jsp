@@ -30,22 +30,21 @@ select {
                     <div class="login-space">
                         <div class="login">
                         <c:out value="${error}"/>
-                        <form:form action="/login" method="post" modelAttribute="userlog">
+                        <form action="/login" method="post" >
                         
                         
                         <div class="group">
-                        <form:label for="user" class="label" path="email">Email:</form:label>
-                        <form:input id="pass"  class="input"  path="email"/> 
-                        <form:errors path="email"/>
+                        <label for="user" class="label" name="email">Email:</label>
+                        <input id="pass"  class="input"  name="email"/> 
                         </div>
                         
                         
                      
                         
                         <div class="group">
-                        <form:label for="user" class="label" path="password">password</form:label>
-                        <form:input id="pass" type="password" class="input" data-type="password" path="password"/>
-                        <form:errors path="password"/>
+                        <label for="user" class="label" name="password">password</label>
+                        <input id="pass" type="password" class="input" data-type="password" name="password"/>
+                       
                         </div>
                         
                        
@@ -54,7 +53,7 @@ select {
                         
                         <div class="group"> <input type="submit" class="button" value="Sign In"> </div>
                         
-                        </form:form>
+                        </form>
                       
                     
                         </div>

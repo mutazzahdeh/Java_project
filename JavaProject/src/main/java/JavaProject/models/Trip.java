@@ -64,19 +64,49 @@ public class Trip {
 	public Trip() {
 		super();
 	}
+
+
+	
+
+
+	public Long getId() {
+		return id;
+	}
+
+
+
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+
+
+
 	public String getTripName() {
 		return tripName;
 	}
+
+
+
 
 
 	public void setTripName(String tripName) {
 		this.tripName = tripName;
 	}
 
-	
+
+
+
+
 	public String getPostion() {
 		return postion;
 	}
+
+
+
 
 
 	public void setPostion(String postion) {
@@ -84,16 +114,119 @@ public class Trip {
 	}
 
 
+
+
+
 	public String getDirection() {
 		return direction;
 	}
+
+
+
 
 
 	public void setDirection(String direction) {
 		this.direction = direction;
 	}
 
-	
+
+
+
+
+	public int getCost() {
+		return cost;
+	}
+
+
+
+
+
+	public void setCost(int cost) {
+		this.cost = cost;
+	}
+
+
+
+
+
+	public int getTime() {
+		return time;
+	}
+
+
+
+
+
+	public void setTime(int time) {
+		this.time = time;
+	}
+
+
+
+
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+
+
+
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+
+
+
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+
+
+
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+
+
+
+
+	public List<Driver> getDriver() {
+		return driver;
+	}
+
+
+
+
+
+	public void setDriver(List<Driver> driver) {
+		this.driver = driver;
+	}
+
+
+
+
+
+	public List<Users> getUser() {
+		return user;
+	}
+
+
+
+
+
+	public void setUser(List<Users> user) {
+		this.user = user;
+	}
+
+
+
 
 
 	@PrePersist

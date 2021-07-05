@@ -10,7 +10,6 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -75,7 +74,7 @@ public class javacontroller {
 	@RequestMapping("/test")
 	public String userhome(@ModelAttribute("trip") Trip trip,HttpSession session) {
 		
-	if(session.getAttribute("userId") !=null) {
+	if(session.getAttribute("user") !=null) {
     		
 		return "home.jsp";	
     			}else
@@ -93,6 +92,7 @@ public class javacontroller {
 		model.addAttribute("city",c);
 		return "userlogin.jsp";
 	}else{
+		
 		Users d = usersservice.registerUser(user);
 		
     	session.setAttribute("user", d.getId());
@@ -115,7 +115,7 @@ public class javacontroller {
         		return "driver.jsp";
         	}else{
         	Driver d = driverService.registerDriver(driver);
-        	session.setAttribute("driverid", d.getId());
+        	session.setAttribute("user", d.getId());
         	return "redirect:/driver";
         	}
     }
@@ -135,18 +135,18 @@ public class javacontroller {
 	    }
 
     	
-    	@RequestMapping("/login")
-    	public String userLogIN(@ModelAttribute("userlog") Users user, Model model, HttpSession session,@Valid @ModelAttribute("trip") Trip trip,BindingResult ros) {
-    		boolean isAuthenticated = usersservice.authenticateUser(user.getEmail(), user.getPassword());
+	 @PostMapping("/login")
+    	public String userLogIN(@RequestParam("email") String email,@RequestParam("password") String password, Model model, HttpSession session,@Valid @ModelAttribute("trip") Trip trip,BindingResult ros) {
+    		boolean isAuthenticated = usersservice.authenticateUser(email, password);
     		if(isAuthenticated) {
-    			Users u = usersservice.findByEmail(user.getEmail());
-    			session.setAttribute("userId", u.getId());
-    			return "redirect:/userlog";
+    			Users u = usersservice.findByEmail(email);
+    			session.setAttribute("user", u.getId());
+    			return "redirect:/test";
     		}
     		else {
     			
     			model.addAttribute("error", "Invalid Credentials! Please try again with the correct user information!");
-    			if(session.getAttribute("userId") !=null) {
+    			if(session.getAttribute("user") !=null) {
     		
 			return "redirect:/test";	
     			}else
@@ -161,12 +161,16 @@ public class javacontroller {
     	public String getTaxi(@Valid @ModelAttribute("trip") Trip trip,BindingResult result,HttpSession session,Model model) {
 
     		System.out.println(session.getAttribute("userId"));
-    		if(session.getAttribute("userId") !=null) {
+    		if(session.getAttribute("user") !=null) {
     	
     		if(result.hasErrors()) {
     			System.out.println("iam in the errors :D");
     			return"redirect:/test";
     		}else {
+    			Users u=usersservice.findUserById((Long)session.getAttribute("user"));
+    			List<Users> x =trip.getUser();
+    			x.add(u);
+    			trip.setUser(x);
     		tripService.createTrip(trip);
     		
     		
@@ -203,7 +207,7 @@ public class javacontroller {
     	
     	@RequestMapping("/show")
     	public String show(HttpSession session,Model model) {
-    		if(session.getAttribute("userId") !=null) {
+    		if(session.getAttribute("user") !=null) {
     			model.addAttribute("trip", tripService.findAllTrip());
     			return "main.jsp";
     		}else
