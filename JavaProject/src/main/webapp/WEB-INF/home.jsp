@@ -51,20 +51,20 @@ background-image:url("img/back.jpg");
                         
                          <div class="group">
                         <form:label for="user" class="label" path="tripName">trip Name:</form:label>
-                        <form:input class="input" path="tripName"/>
+                        <form:input class="input" path="tripName" required="required " />
                         <form:errors path="tripName"/>
                         </div>
                         
                         
                          <div class="group">
-                        <form:label for="user" class="label" path="postion">postion</form:label>
-                        <form:input class="input" path="postion"/>
+                        <form:label for="user" class="label" path="postion">Postion</form:label>
+                        <form:input class="input" path="postion" required="required " />
                         <form:errors path="postion"/>
                         </div>
                         
                         <div class="group">
                         <form:label for="user" class="label" path="direction">direction</form:label>
-                        <form:input class="input" path="direction"/>
+                        <form:input class="input" path="direction" required="required " />
                         <form:errors path="direction"/>
                         </div>
                         
