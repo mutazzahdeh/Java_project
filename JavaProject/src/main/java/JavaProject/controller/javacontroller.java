@@ -116,7 +116,7 @@ public class javacontroller {
         	}else{
         	Driver d = driverService.registerDriver(driver);
         	session.setAttribute("driverid", d.getId());
-        	return "redirect:/coursers";
+        	return "redirect:/driver";
         	}
     }
 
@@ -126,7 +126,7 @@ public class javacontroller {
 	        if(isAuthenticated) {
 	        	Driver d =driverService.findByEmail(email); 
 	        	session.setAttribute("user", d.getId() );
-	        	return "redirect:/";
+	        	return "redirect:/driver";
 	        }else {
 	        	model.addAttribute("error", "Invalid credentials. Try again!");
 	       
@@ -155,8 +155,11 @@ public class javacontroller {
     	}
     	
     	
+
+    	
     	@PostMapping("/gettaxi")
     	public String getTaxi(@Valid @ModelAttribute("trip") Trip trip,BindingResult result,HttpSession session,Model model) {
+
     		System.out.println(session.getAttribute("userId"));
     		if(session.getAttribute("userId") !=null) {
     	
@@ -173,6 +176,21 @@ public class javacontroller {
     	}
     	else
     		return "redirect:/userlog";
+    	}
+    	
+       	@RequestMapping("/driver")
+    	public String Ta(@Valid @ModelAttribute("trip") Trip trip,Model model,HttpSession session) {
+    		if(session.getAttribute("user") !=null) {
+    			List<Trip> t=tripService.findAllTrip();
+    			Driver d=driverService.findUserById((Long)session.getAttribute("user"));
+    			
+    			model.addAttribute("trips", t);
+    			model.addAttribute("user", d);
+    		return "home2.jsp";
+    		
+    	}
+    	
+    		return "redirect:/loginasdriver";
     	}
     	
     	

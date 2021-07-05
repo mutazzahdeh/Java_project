@@ -15,9 +15,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -35,7 +32,6 @@ public class Trip {
 	
 	@NotNull
 	private String postion;
-	
 	@NotNull
 	private String direction;
 	
