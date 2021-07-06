@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -160,18 +161,19 @@ public class javacontroller {
     	@PostMapping("/gettaxi")
     	public String getTaxi(@Valid @ModelAttribute("trip") Trip trip,BindingResult result,HttpSession session,Model model) {
 
-    		System.out.println(session.getAttribute("userId"));
+    		System.out.println(session.getAttribute("user"));
     		if(session.getAttribute("user") !=null) {
     	
     		if(result.hasErrors()) {
     			System.out.println("iam in the errors :D");
     			return"redirect:/test";
     		}else {
-    			Users u=usersservice.findUserById((Long)session.getAttribute("user"));
-    			List<Users> x =trip.getUser();
-    			x.add(u);
-    			trip.setUser(x);
-    		tripService.createTrip(trip);
+    			
+
+    		trip=tripService.createTrip(trip);
+    		Long id=(Long)session.getAttribute("user");
+    		usersservice.addTrip(trip,id);
+    		
     		
     		
     		
@@ -208,7 +210,10 @@ public class javacontroller {
     	@RequestMapping("/show")
     	public String show(HttpSession session,Model model) {
     		if(session.getAttribute("user") !=null) {
-    			model.addAttribute("trip", tripService.findAllTrip());
+    			Long id=(Long)session.getAttribute("user");
+        		Users u= usersservice.findUserById(id);
+        		
+    			model.addAttribute("trip", tripService.findByUserContains(u));
     			return "main.jsp";
     		}else
     			
@@ -216,8 +221,32 @@ public class javacontroller {
     		
     	}
     	
-    	
+    	@RequestMapping("/confirm/{id}")
+    	public String Take(@PathVariable("id") Long id,Model model) {
+    		Trip t=tripService.findById(id);
+    		model.addAttribute("trip",t);
+    		return "confimtaxi.jsp";
+
     		
+    	}
+    	
+    
+    	@PostMapping("/confirm/{id}/edit/{id1}")
+    	public String confirm(@PathVariable("id") Long id,@PathVariable("id1") Long id2,@RequestParam("cost") int cost,@RequestParam("time") int time,HttpSession session,Model model) {
+    		
+    		Trip t=tripService.findById(id);
+    		
+    		t.setCost(cost);
+    		t.setTime(time);
+    		
+    		Long id1=(Long)session.getAttribute("user");
+    		driverService.updatetrip(t,id2);
+    		
+    		
+    		
+    		
+    		return "redirect:/driver";
+    		}	
 	
 
 	
