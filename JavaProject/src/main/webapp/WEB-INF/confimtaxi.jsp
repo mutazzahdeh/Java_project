@@ -47,32 +47,27 @@ background-image:url("img/back.jpg");
                         <div class="login">
                         
                        
-                        <form:form action="/gettaxi" method="post" modelAttribute="trip">
+                        <form action="/confirm/${trip.id}/edit/${user}" method="post" >
                         
                          <div class="group">
-                        <form:label for="user" class="label" path="tripName">trip Name:</form:label>
-                        <form:input class="input" path="tripName" required="required " />
-                        <form:errors path="tripName"/>
+                        <label for="user" class="label" cost:</label>
+                        <input type="number" class="input" name="cost" required="required " />
+                     
                         </div>
                         
                         
                          <div class="group">
-                        <form:label for="user" class="label" path="postion">Postion:</form:label>
-                        <form:input class="input" path="postion" required="required " />
-                        <form:errors path="postion"/>
+                        <label for="user" class="label" >Time</label>
+                        <input class="input" type="number"name="time" required="required " />
+                       
                         </div>
+                    
                         
                         <div class="group">
-                        <form:label for="user" class="label" path="direction">direction:</form:label>
-                        <form:input class="input" path="direction" required="required " />
-                        <form:errors path="direction"/>
+                        <input type="submit" class="button" value="Confirm Requist">
                         </div>
                         
-                        <div class="group">
-                        <input type="submit" class="button" value="Ask Taxi">
-                        </div>
-                        
-                        </form:form>
+                        </form>
                         
                    <a href="/show" class="button">Show</a>
                    <a href="/logout" class="button">logout</a>

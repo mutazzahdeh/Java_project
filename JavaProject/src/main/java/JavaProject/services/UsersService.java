@@ -2,9 +2,12 @@ package JavaProject.services;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
+import JavaProject.models.Trip;
 import JavaProject.models.Users;
 import JavaProject.repositories.UsersRepository;
 
@@ -63,4 +66,13 @@ public class UsersService {
     public void updateUser(Users user) {
     	userRepository.save(user);
     }
+
+	public void addTrip(@Valid Trip trip, Long id) {
+		Users u=findUserById(id);
+		u.getTrip().add(trip);
+		userRepository.save(u);
+		
+	}
+
+	
 }

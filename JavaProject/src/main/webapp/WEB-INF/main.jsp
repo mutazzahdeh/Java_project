@@ -41,7 +41,12 @@ background-image: url("img/deadpool.jpg");
       <td>${t.postion}</td>
       <td>${t.direction}</td>
       <td>${t.tripName}</td>
-      <td>Watting</td>
+      <%! int month=5; %>
+<% if(month==5){ %>
+<td>Its February</td>
+<% }else{ %>
+<td>Any month other than February</td>
+<%} %>
       
     </tr>
     </c:forEach>
