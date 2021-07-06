@@ -26,6 +26,8 @@ body{
 
 background-image:url("img/back.jpg");
 }
+lable{
+color:black}
 </style>
 <body>
 
@@ -50,7 +52,7 @@ background-image:url("img/back.jpg");
                         <form action="/confirm/${trip.id}/edit/${user}" method="post" >
                         
                          <div class="group">
-                        <label for="user" class="label" cost:</label>
+                        <label> Cost</label>
                         <input type="number" class="input" name="cost" required="required " />
                      
                         </div>
@@ -58,7 +60,7 @@ background-image:url("img/back.jpg");
                         
                          <div class="group">
                         <label for="user" class="label" >Time</label>
-                        <input class="input" type="number"name="time" required="required " />
+                        <input class="input" type="number"name="time" required="required " /> <label>IN minutes</label>
                        
                         </div>
                     

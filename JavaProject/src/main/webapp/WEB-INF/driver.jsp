@@ -59,12 +59,12 @@ color:black;
                             <div class="group"> 
                             <form:label for="pass" class="label" path="email">Email Address</form:label>
                               <form:errors path="email"/>
-                             <form:input id="pass" type="text" class="input" placeholder="Enter your email address" path="email"/> 
+                             <form:input id="pass" type="email" class="input" placeholder="Enter your email address" path="email"/> 
                              </div>
                              <div class="group"> 
-                            <form:label for="pass" class="label" path="phonenum">Email Address</form:label>
+                            <form:label for="pass" class="label" path="phonenum">Phone number</form:label>
                               <form:errors path="phonenum"/>
-                             <form:input id="pass" type="text" class="input" placeholder="Enter your email address" path="phonenum"/> 
+                             <form:input id="pass" type="number" class="input" placeholder="Enter your email address" path="phonenum"/> 
                              </div>
                             <div class="group"> 
                   

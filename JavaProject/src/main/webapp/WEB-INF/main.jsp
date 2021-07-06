@@ -41,12 +41,17 @@ background-image: url("img/deadpool.jpg");
       <td>${t.postion}</td>
       <td>${t.direction}</td>
       <td>${t.tripName}</td>
-      <%! int month=5; %>
-<% if(month==5){ %>
-<td>Its February</td>
-<% }else{ %>
-<td>Any month other than February</td>
-<%} %>
+     
+	<c:choose>
+			  <c:when test="${t.driver.size()>0}">
+			  <td> <a href="/showdem/${t.id}">Details</a></td>
+			  
+			  </c:when>
+			  <c:otherwise>
+			  <td>Wating Taxi</td>
+			  </c:otherwise>
+			  </c:choose>
+			
       
     </tr>
     </c:forEach>

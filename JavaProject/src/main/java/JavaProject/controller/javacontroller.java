@@ -204,7 +204,7 @@ public class javacontroller {
     	public String logOut(HttpSession session) {
     		session.invalidate();
     		
-    		return "redirect:/userlog";
+    		return "redirect:/";
     	}
     	
     	@RequestMapping("/show")
@@ -247,6 +247,14 @@ public class javacontroller {
     		
     		return "redirect:/driver";
     		}	
+    	
+    	
+    	@RequestMapping("/showdem/{id}")
+    	public String toshow(@PathVariable("id") Long id,Model model) {
+    		Trip t=tripService.findById(id);
+    		model.addAttribute("show", t);
+    		return "detail.jsp";
+    	}
 	
 
 	

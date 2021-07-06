@@ -36,7 +36,7 @@ background-image:url("img/back.jpg");
 		</div>
 		<h4>Trips:</h4>
 
-		<table class="table">
+		<table class="table table-dark">
 		  <thead class="thead-dark">
 		    <tr>
 		    <th scope="col">NameTrip</th>
