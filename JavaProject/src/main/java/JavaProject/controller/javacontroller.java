@@ -160,7 +160,7 @@ public class javacontroller {
     	@PostMapping("/gettaxi")
     	public String getTaxi(@Valid @ModelAttribute("trip") Trip trip,BindingResult result,HttpSession session,Model model) {
 
-    		System.out.println(session.getAttribute("userId"));
+    		System.out.println(session.getAttribute("user"));
     		if(session.getAttribute("user") !=null) {
     	
     		if(result.hasErrors()) {
