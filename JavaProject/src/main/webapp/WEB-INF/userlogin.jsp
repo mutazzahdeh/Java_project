@@ -90,12 +90,14 @@ select {
                         <form:errors path="phonenum"/>
                         </div>
                      
-                        <form:select id="pass" class="input"  path="city">
-   		
-   								<c:forEach items="${city}" var="c">
-     							<form:option value="${c}"><c:out value="${c.name}"/> </form:option>
-        						</c:forEach>
-								</form:select>
+                       <form:label for="user" class="label" path="phonenum">City</form:label>
+                        <form:select  id="pass"  class="input" path="city">
+
+                                   <c:forEach items="${city}" var="c">
+                                 <form:option value="${c}"><c:out value="${c.name}"/> </form:option>
+                                </c:forEach>
+                                </form:select>
+                                
 								
 								<div class="group"> <input type="submit" class="button" value="Sign Up"> </div>
                             <div class="hr"></div>
