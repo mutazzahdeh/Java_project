@@ -11,4 +11,10 @@ we used Spring Boot to create the backend for this website, and we had relations
 
 ![alt text](photo2.png)
 
+![alt text](photo3.png)
+
+![alt text](photo4.png)
+
+
+
 
