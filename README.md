@@ -15,6 +15,18 @@ we used Spring Boot to create the backend for this website, and we had relations
 
 ![alt text](photo4.png)
 
+![alt text](photo5.png)
+
+for the driver role
+
+![alt text](photo8.png)
+
+![alt text](photo9.png)
+
+![alt text](photo10.png)
+
+
+
 
 
 
